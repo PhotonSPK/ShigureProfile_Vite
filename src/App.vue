@@ -29,7 +29,9 @@ let currentIndex = ref(0);
     </div>
     <div class="lg:col-span-8">
       <div class="card">
-        1919810
+        <p>身份不明的电波系兽耳少女，自称是超级特工。</p>
+        <p>口中经常说着令人费解的话语，时常在各种意想不到的地方出现。</p>
+        <p>虽然平时一副不务正业的样子，但是干起正事来比任何人都要努力。 </p>
       </div>
       <div>
         <Gallary />
