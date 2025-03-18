@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import MasonryWall from '@yeger/vue-masonry-wall'
 import { Fancybox } from "@fancyapps/ui";
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
-import illustrations from '../assets/illustrations.json'
+import MasonryWall from "@yeger/vue-masonry-wall";
 import { onMounted } from 'vue';
+import illustrations from '../illustrations.json';
 
-console.log(illustrations)
-onMounted(() => {
+onMounted(async () => {
+    console.log(illustrations);
     Fancybox.bind('[data-fancybox]', {
 
     });
@@ -15,11 +15,13 @@ onMounted(() => {
 </script>
 
 <template>
-    <MasonryWall :items="illustrations" :ssr-columns="1" :column-width="200" :gap="16">
-        <template #default="{ item }">
-            <img data-fancybox :src="`/imgs/${item.illustrator}_${item.date}.png`" class="card" />
-        </template>
-    </MasonryWall>
+    <Suspense>
+        <MasonryWall :items="illustrations" :ssr-columns="1" :column-width="300" :gap="16">
+            <template #default="{ item }">
+                <img class="card" :src="`/imgs/illustrations/${item.illustrator}-${item.date}.avif`" data-fancybox />
+            </template>
+        </MasonryWall>
+    </Suspense>
 </template>
 
 <style scoped>
