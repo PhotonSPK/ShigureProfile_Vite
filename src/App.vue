@@ -13,7 +13,7 @@ let currentIndex = ref(0);
 </script>
 
 <template>
-  <div class="container mx-auto mt-16 grid grid-cols-1 lg:grid-cols-12 gap-4 ">
+  <div class="container mx-auto my-16 grid grid-cols-1 lg:grid-cols-12 gap-4 ">
     <div class="lg:col-span-4">
       <div class="card">
         <Portrait :avatar="Object.keys(avatars)[currentIndex]" />

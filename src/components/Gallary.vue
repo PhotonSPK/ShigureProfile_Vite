@@ -15,19 +15,37 @@ onMounted(async () => {
 
 <template>
     <Suspense>
-        <MasonryWall :items="illustrations" :ssr-columns="1" :column-width="300" :gap="16">
+        <MasonryWall :items="illustrations" :column-width="200" :gap="16">
             <template #default="{ item }">
-                <img v-if="item.length === 0 && !item.nsfw" class="card" :src="`/imgs/illustrations/${item.illustrator}_${item.date}.avif`" data-fancybox />
-                <img v-else-if="item.length === 0 && item.nsfw" class="card blur-sm brightness-50" :src="`/imgs/illustrations/${item.illustrator}_${item.date}.avif`" data-fancybox />
-                <div v-else>
-                    <div class="card flex">
-                        <img v-if="!item.nsfw" :src="`/imgs/illustrations/${item.illustrator}_${item.date}/0.avif`" :data-fancybox="`${item.illustrator}_${item.date}`" />
-                        <img v-else class="blur-sm brightness-50" :src="`/imgs/illustrations/${item.illustrator}_${item.date}/0.avif`" :data-fancybox="`${item.illustrator}_${item.date}`" />
-                        <div class="no-display">
-                            <img v-for="index in item.length-1" :src="`/imgs/illustrations/${item.illustrator}_${item.date}/${index}.avif`" :data-fancybox="`${item.illustrator}_${item.date}`"/>
+                <img v-if="item.length === 0 && !item.nsfw" class="card"
+                    :src="`/imgs/illustrations/${item.illustrator}_${item.date}.avif`" data-fancybox />
+                <a v-else-if="item.length === 0 && item.nsfw" data-fancybox
+                    :data-src="`/imgs/illustrations/${item.illustrator}_${item.date}.avif`">
+                    <div class="relative">
+                        <img class="card" :src="`/imgs/illustrations/${item.illustrator}_${item.date}.avif`" />
+                        <div
+                            class="card absolute backdrop-blur-sm backdrop-brightness-50 inset-0 flex items-center justify-center">
+                            <img class="" src="/src/assets/nsfw.avif" />
                         </div>
                     </div>
-                </div>
+                </a>
+                <a v-else class="card" :data-src="`/imgs/illustrations/${item.illustrator}_${item.date}/00.avif`"
+                    :data-fancybox="`${item.illustrator}_${item.date}`">
+                    <img v-if="!item.nsfw" :src="`/imgs/illustrations/${item.illustrator}_${item.date}/00.avif`"
+                        :data-fancybox="`${item.illustrator}_${item.date}`" />
+                    <div v-else class="relative">
+                        <img class="card" :src="`/imgs/illustrations/${item.illustrator}_${item.date}/00.avif`" />
+                        <div
+                            class="card absolute backdrop-blur-sm backdrop-brightness-50 inset-0 flex items-center justify-center">
+                            <img class="" src="/src/assets/nsfw.avif" />
+                        </div>
+                    </div>
+                    <div class="no-display">
+                        <img v-for="index in item.length - 1"
+                            :src="`/imgs/illustrations/${item.illustrator}_${item.date}/${index.toString().padStart(2, '0')}.avif`"
+                            :data-fancybox="`${item.illustrator}_${item.date}`" />
+                    </div>
+                </a>
             </template>
         </MasonryWall>
     </Suspense>
