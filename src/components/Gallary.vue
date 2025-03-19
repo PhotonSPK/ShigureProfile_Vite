@@ -32,7 +32,6 @@ function makeIllustratorContact(item: Illustration): HTMLElement {
     const div = document.createElement('div');
     div.classList.add('flex', 'gap-2');
     for (const key in contact) {
-        const value = contact[key];
         const a = document.createElement('a');
         a.href = contact[key];
         a.target = '_blank';
@@ -60,26 +59,30 @@ const fancyBoxOption: Object = {
     },
     tpl: {
         main: `<div class="fancybox__container has-sidebar" role="dialog" aria-modal="true" aria-label="{{MODAL}}" tabindex="-1">
-    <div class="fancybox__backdrop"></div>
-    <div class="fancybox__cols">
-      <div class="fancybox__col">
-        <div class="fancybox__carousel"></div>
-        <div class="fancybox__footer"></div>
-      </div>
-      <div class="fancybox__col">
-        <div class="fancybox__data">
-          <p class="mb-4 text-lg font-semibold">Hello</p>
-          <p class="mb-4">
-            Here you can place any content such as advertisement or gallery description.
-          </p>
-          <p class="mb-4">
-            You can dynamically update this content using callbacks.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>`,
-    }
+                <div class="fancybox__backdrop"></div>
+                <div class="fancybox__cols">
+                <div class="fancybox__col">
+                    <div class="fancybox__carousel"></div>
+                    <div class="fancybox__footer"></div>
+                </div>
+                <div class="fancybox__col">
+                    <div id="fancybox_content" class="fancybox__data">
+                        <br />
+                    </div>
+                </div>
+                </div>
+            </div>`
+    },
+    on: {
+        'Carousel.ready Carousel.change': (fancybox: Fancybox) => {
+            const contentVal = fancybox!.getSlide()!.triggerEl!.dataset.content;
+            const contentEl = document.getElementById('fancybox_content');
+
+            if (contentEl) {
+                contentEl.innerHTML = contentVal || '';
+            }
+        },
+    },
 }
 
 onMounted(() => {
@@ -103,33 +106,36 @@ onUnmounted(() => {
         <template #default="{ item }">
             <!-- single image -->
             <img v-if="item.length === 0 && !item.nsfw" class="card" :src="makePath(item)" data-fancybox
-                :data-caption="`画师: ${item.illustrator} ${makeIllustratorContact(item).outerHTML}`" />
+                :data-content="`画师: ${item.illustrator} ${makeIllustratorContact(item).outerHTML}`" loading="lazy" />
             <!-- single nsfw image -->
             <a v-else-if="item.length === 0 && item.nsfw" data-fancybox :data-src="makePath(item)"
-                :data-caption="`画师: ${item.illustrator} ${makeIllustratorContact(item).outerHTML}`">
+                :data-content="`画师: ${item.illustrator} ${makeIllustratorContact(item).outerHTML}`">
                 <div class="relative">
-                    <img class="card" :src="makePath(item)" />
+                    <img class="card" :src="makePath(item)" loading="lazy" />
                     <div
                         class="card absolute backdrop-blur-sm backdrop-brightness-50 inset-0 flex items-center justify-center">
-                        <img class="" src="/src/assets/nsfw.avif" />
+                        <img class="max-w-full max-h-full object-contain" src="/src/assets/nsfw.avif" />
                     </div>
                 </div>
             </a>
             <!-- multiple image -->
             <a v-else class="card" :data-src="makePath(item, 0)" :data-fancybox="`${item.illustrator}_${item.date}`"
-                :data-caption="`画师: ${item.illustrator} ${makeIllustratorContact(item).outerHTML}`">
-                <img v-if="!item.nsfw" :src="makePath(item, 0)" :data-fancybox="`${item.illustrator}_${item.date}`" />
+                :data-content="`画师: ${item.illustrator} ${makeIllustratorContact(item).outerHTML}`">
+                <img v-if="!item.nsfw" :src="makePath(item, 0)" :data-fancybox="`${item.illustrator}_${item.date}`"
+                    loading="lazy" />
                 <!-- multiple nsfw image -->
                 <div v-else class="relative">
-                    <img class="card" :src="makePath(item, 0)" />
+                    <img class="card" :src="makePath(item, 0)" loading="lazy" />
                     <div
                         class="card absolute backdrop-blur-sm backdrop-brightness-50 inset-0 flex items-center justify-center">
-                        <img class="" src="/src/assets/nsfw.avif" />
+                        <img class="max-w-full max-h-full object-contain" src="/src/assets/nsfw.avif" />
                     </div>
                 </div>
                 <div class="no-display">
                     <img v-for="index in item.length - 1" :src="makePath(item, index)"
-                        :data-fancybox="`${item.illustrator}_${item.date}`" />
+                        :data-fancybox="`${item.illustrator}_${item.date}`"
+                        :data-content="`画师: ${item.illustrator} ${makeIllustratorContact(item).outerHTML}`"
+                        loading="lazy" />
                 </div>
             </a>
         </template>
