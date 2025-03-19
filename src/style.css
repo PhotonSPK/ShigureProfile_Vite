@@ -1,10 +1,14 @@
 @import "tailwindcss";
+@font-face {
+  font-family: 'TsukuARdGothic';
+  src: url('/TsukuARdGothicStd-Bold.woff2') format('woff2');
+}
 @theme {
   --color-primary: #6495ED;
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'TsukuARdGothic', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 800;
 
