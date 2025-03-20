@@ -43,6 +43,7 @@ Object.keys(avatars).forEach((key) => {
         <p>所有图像以 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">CC-BY-NC-SA
             4.0</a> 方式分享</p>
         <p>禁止 R18G / 违法 / 政治相关二次创作.</p>
+        <p>禁止用于 AI 训练.</p>
         <p>2025 © AkulaQWQ All right reserved.</p>
         <p>Illustrators have their own right.</p>
       </div>
