@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import TransitionableImage from "./components/TransitionableImage.vue";
 import TitleWithSwitch from './components/TitleWithSwitch.vue';
 import Gallary from "./components/Gallary.vue";
 import Twikoo from "./components/Twikoo.vue";
 
+const isDev = computed(() => import.meta.env.MODE === 'development');
+const counterUrl = isDev ? 'https://count.akula.moe/akula:shigure?theme=rule34&add=0' : 'https://count.akula.moe/akula:shigure?theme=rule34';
+const svgContent = ref('');
 const avatars = {
   "recruit": "新进干员",
   "combat": "战斗特工",
@@ -15,6 +18,10 @@ Object.keys(avatars).forEach((key) => {
   const img = new Image();
   img.src = `https://img.akula.moe/portraits/shigure_${key}.avif`;
   img.src = `https://img.akula.moe/composes/shigure_${key}_compose.avif`;
+});
+
+onMounted(async () => {
+  svgContent.value = await fetch(counterUrl).then((res) => res.text());
 });
 </script>
 
@@ -46,6 +53,11 @@ Object.keys(avatars).forEach((key) => {
         <p>禁止用于 AI 训练.</p>
         <p>2025 © AkulaQWQ All right reserved.</p>
         <p>Illustrators have their own right.</p>
+      </div>
+      <div class="card flex justify-center">
+        <Suspense>
+          <div v-html="svgContent"></div>
+        </Suspense>
       </div>
       <div class="card">
         <Twikoo />
