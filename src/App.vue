@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import TransitionableImage from "./components/TransitionableImage.vue";
 import TitleWithSwitch from './components/TitleWithSwitch.vue';
 import Gallary from "./components/Gallary.vue";
 import Twikoo from "./components/Twikoo.vue";
 
-const isDev = computed(() => import.meta.env.MODE === 'development');
-const counterUrl = isDev ? 'https://count.akula.moe/akula:shigure?theme=rule34&add=0' : 'https://count.akula.moe/akula:shigure?theme=rule34';
+const counterUrl = 'https://count.akula.moe/akula:shigure?theme=rule34';
 const svgContent = ref('');
 const avatars = {
   "recruit": "新进干员",
@@ -34,7 +33,7 @@ onMounted(async () => {
           :path="`https://img.akula.moe/portraits/shigure_${Object.keys(avatars)[currentIndex]}.avif`" />
         <TitleWithSwitch v-model:currentIndex="currentIndex" :avatars="Object.values(avatars)" />
         <div>
-          
+
         </div>
         <div class="leading-8 text-center bg-primary">
           <p>身份不明的电波系兽耳少女，自称是超级特工。</p>
