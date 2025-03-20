@@ -13,8 +13,8 @@ const avatars = {
 let currentIndex = ref(0);
 Object.keys(avatars).forEach((key) => {
   const img = new Image();
-  img.src = `/imgs/portraits/shigure_${key}.avif`;
-  img.src = `/imgs/composes/shigure_${key}_compose.avif`;
+  img.src = `https://img.akula.moe/portraits/shigure_${key}.avif`;
+  img.src = `https://img.akula.moe/composes/shigure_${key}_compose.avif`;
 });
 </script>
 
@@ -24,7 +24,7 @@ Object.keys(avatars).forEach((key) => {
     <div class="lg:col-span-4">
       <div class="card">
         <TransitionableImage :refKey="ref(Object.keys(avatars)[currentIndex]).value"
-          :path="`/imgs/portraits/shigure_${Object.keys(avatars)[currentIndex]}.avif`" />
+          :path="`https://img.akula.moe/portraits/shigure_${Object.keys(avatars)[currentIndex]}.avif`" />
         <TitleWithSwitch v-model:currentIndex="currentIndex" :avatars="Object.values(avatars)" />
         <div>
           
@@ -53,7 +53,7 @@ Object.keys(avatars).forEach((key) => {
     <div class="lg:col-span-8">
       <div class="card">
         <TransitionableImage :refKey="ref(Object.keys(avatars)[currentIndex]).value"
-          :path="`/imgs/composes/shigure_${Object.keys(avatars)[currentIndex]}_compose.avif`" />
+          :path="`https://img.akula.moe/composes/shigure_${Object.keys(avatars)[currentIndex]}_compose.avif`" />
       </div>
       <div>
         <Gallary />

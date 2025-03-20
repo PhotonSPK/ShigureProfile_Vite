@@ -21,9 +21,9 @@ interface Illustration {
 
 function makePath(item: Illustration, index: number = -1): string {
     if (index >= 0)
-        return `/imgs/illustrations/${item.illustrator}_${item.date}/${index.toString().padStart(2, '0')}.avif`;
+        return `https://img.akula.moe/illustrations/${item.illustrator}_${item.date}/${index.toString().padStart(2, '0')}.avif`;
     else
-        return `/imgs/illustrations/${item.illustrator}_${item.date}.avif`;
+        return `https://img.akula.moe/illustrations/${item.illustrator}_${item.date}.avif`;
 
 }
 
