@@ -8,8 +8,9 @@ import Twikoo from "./components/Twikoo.vue";
 const counterUrl = 'https://count.akula.moe/akula:shigure?theme=rule34';
 const svgContent = ref('');
 const avatars = {
-  "recruit": "新进干员",
+  "airborne": "空降精英",
   "combat": "战斗特工",
+  "recruit": "新进干员",
 }
 
 let currentIndex = ref(0);
@@ -44,6 +45,7 @@ onMounted(async () => {
       <div class="card text-center">
         <p>一代目画师: <a href="https://www.mihuashi.com/profiles/1446956/" target="_blank">Byx</a></p>
         <p>二代目画师: <a href="https://www.mihuashi.com/profiles/1182712/" target="_blank">瓜兮兮的～</a></p>
+        <p>三代目画师: <a href="https://www.mihuashi.com/profiles/1857409/" target="_blank">Dorgar-渔刀</a></p>
       </div>
       <div class="card text-center">
         <p>所有图像以 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">CC-BY-NC-SA
