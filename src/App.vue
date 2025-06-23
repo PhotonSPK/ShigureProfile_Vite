@@ -52,10 +52,11 @@ onMounted(async () => {
             4.0</a> 方式分享</p>
         <p>禁止 R18G / 违法 / 政治相关二次创作.</p>
         <p>禁止用于 AI 训练.</p>
-        <p>2025 © AkulaQWQ All right reserved.</p>
+        <p>2025 © Akula Arius. All right reserved.</p>
         <p>Illustrators have their own right.</p>
         <footer>
           <a href=" https://icp.gov.moe/?keyword=20247460" target="_blank">萌ICP备20247460号</a>
+          <span style="color: transparent;">Nobody loves me :(</span>
         </footer>
       </div>
       <div class="card flex justify-center">
