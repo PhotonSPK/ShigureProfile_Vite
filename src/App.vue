@@ -55,7 +55,7 @@ onMounted(async () => {
         <p>2025 © Akula Arius. All right reserved.</p>
         <p>Illustrators have their own right.</p>
         <footer>
-          <a href=" https://icp.gov.moe/?keyword=20247460" target="_blank">萌ICP备20247460号</a>
+          <a href="https://icp.gov.moe/?keyword=20247460" target="_blank">萌ICP备20247460号</a>
         </footer>
       </div>
       <div class="card flex justify-center">
@@ -63,7 +63,10 @@ onMounted(async () => {
           <div v-html="svgContent"></div>
         </Suspense>
       </div>
-      <div class="card">
+      <div class="card text-center">
+        <h2>由<a href="https://space.bilibili.com/202588/">泉户猫丸</a>斥巨资打造的独立游戏</h2>
+        <br />
+        <span style="text-decoration: line-through">猫丸看到了记得给我打广告费</span>
         <img class="max-w-full max-h-full" src="/src/assets/nekomaru_poster.avif" />
       </div>
       <div class="card">
