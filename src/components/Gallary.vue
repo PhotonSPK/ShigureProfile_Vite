@@ -121,8 +121,7 @@ onUnmounted(() => {
             <!-- multiple image -->
             <a v-else class="card" :data-src="makePath(item, 0)" :data-fancybox="`${item.illustrator}_${item.date}`"
                 :data-content="`画师: ${item.illustrator} ${makeIllustratorContact(item).outerHTML}`">
-                <img v-if="!item.nsfw" :src="makePath(item, 0)" :data-fancybox="`${item.illustrator}_${item.date}`"
-                    loading="lazy" />
+                <img v-if="!item.nsfw" :src="makePath(item, 0)" loading="lazy" />
                 <!-- multiple nsfw image -->
                 <div v-else class="relative">
                     <img class="card" :src="makePath(item, 0)" loading="lazy" />
