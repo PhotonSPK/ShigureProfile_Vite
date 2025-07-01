@@ -56,13 +56,15 @@ onMounted(async () => {
         <p>Illustrators have their own right.</p>
         <footer>
           <a href=" https://icp.gov.moe/?keyword=20247460" target="_blank">萌ICP备20247460号</a>
-          <span style="color: transparent;">Nobody loves me :(</span>
         </footer>
       </div>
       <div class="card flex justify-center">
         <Suspense>
           <div v-html="svgContent"></div>
         </Suspense>
+      </div>
+      <div class="card">
+        <img class="max-w-full max-h-full" src="/src/assets/nekomaru_poster.avif" />
       </div>
       <div class="card">
         <Twikoo />
