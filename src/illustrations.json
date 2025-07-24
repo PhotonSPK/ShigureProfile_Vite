@@ -1,5 +1,12 @@
 [
     {
+        "illustrator": "幻想乡の鬼狐狸",
+        "date": "20250723",
+        "description": "",
+        "nsfw": false,
+        "length": 0
+    },
+    {
         "illustrator": "Dorgar-渔刀",
         "date": "20250708",
         "description": "",
@@ -30,6 +37,20 @@
     {
         "illustrator": "Wiersa",
         "date": "20250701",
+        "description": "",
+        "nsfw": false,
+        "length": 0
+    },
+    {
+        "illustrator": "JERRY-杰瑞",
+        "date": "20250623_01",
+        "description": "",
+        "nsfw": false,
+        "length": 0
+    },
+    {
+        "illustrator": "JERRY-杰瑞",
+        "date": "20250623_00",
         "description": "",
         "nsfw": false,
         "length": 0
